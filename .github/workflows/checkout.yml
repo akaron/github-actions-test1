@@ -32,7 +32,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: output
-          path: output.txt
+          
 
+      - name: Display structure of downloaded files
+        run: ls -R output.txt
       - name: read artifact
         run: cat output.txt  # likely to fail if "needs" not specified for this job
