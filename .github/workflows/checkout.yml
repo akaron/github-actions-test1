@@ -3,15 +3,24 @@ on: [push]
 jobs:
   test_checkout:
     runs-on: ubuntu-latest
+    env:
+      fruit: apple
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: welcome message
-        run: echo "my first github actions job"
+        run: | 
+          echo "my first github actions job" > output.txt
+          echo "my favorite fruit is ${{ env.fruit }}" >> output.txt
 
       - name: list files
         run: ls
 
       - name: Read file
         run: cat README.md
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: output.txt
