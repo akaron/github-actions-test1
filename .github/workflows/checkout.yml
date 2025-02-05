@@ -24,9 +24,9 @@ jobs:
         with:
           name: output
           path: output.txt
-          
+
   read_output:
-    runs-on: ubuntu-latext
+    runs-on: ubuntu-latest
     steps:
       - name: read artifact
         run: cat output.txt  # likely to fail if "needs" not specified for this job
