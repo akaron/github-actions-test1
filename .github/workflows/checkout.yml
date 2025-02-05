@@ -27,6 +27,7 @@ jobs:
 
   read_output:
     runs-on: ubuntu-latest
+    needs: test_checkout
     steps:
       - name: read artifact
         run: cat output.txt  # likely to fail if "needs" not specified for this job
